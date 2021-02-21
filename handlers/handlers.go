@@ -21,6 +21,7 @@ func Handlers() {
 	router.HandleFunc("/adler32", routers.Hash).Methods("GET")
 	router.HandleFunc("/crc32", routers.Hash).Methods("GET")
 	router.HandleFunc("/crc64", routers.Hash).Methods("GET")
+	router.HandleFunc("/aes-256-cbc", routers.AES256CBC).Methods("GET")
 
 	GCAT_PORT := os.Getenv("GCAT_PORT")
 	if GCAT_PORT == "" {
