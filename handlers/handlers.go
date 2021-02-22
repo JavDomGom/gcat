@@ -22,13 +22,14 @@ func Handlers() {
 	router.HandleFunc("/crc32", routers.Hash).Methods("GET")
 	router.HandleFunc("/crc64", routers.Hash).Methods("GET")
 	router.HandleFunc("/aes-256-cbc", routers.AES256CBC).Methods("GET")
+	router.HandleFunc("/aes-256-ctr", routers.AES256CTR).Methods("GET")
 
-	GCAT_PORT := os.Getenv("GCAT_PORT")
-	if GCAT_PORT == "" {
-		GCAT_PORT = "8080"
+	port := os.Getenv("GCAT_PORT")
+	if port == "" {
+		port = "8080"
 	}
 	handler := cors.AllowAll().Handler(router)
 
-	log.Println("Starting server on http://localhost:" + GCAT_PORT)
-	log.Fatal(http.ListenAndServe(":"+GCAT_PORT, handler))
+	log.Println("Starting server on http://localhost:" + port)
+	log.Fatal(http.ListenAndServe(":"+port, handler))
 }
