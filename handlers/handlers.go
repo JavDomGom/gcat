@@ -25,6 +25,7 @@ func Handlers() {
 	router.HandleFunc("/aes-256-ctr", routers.AES256CTR).Methods("GET")
 	router.HandleFunc("/rsa", routers.RSA).Methods("GET")
 	router.HandleFunc("/elgamal", routers.ElGamal).Methods("GET")
+	router.HandleFunc("/ellipticcurves/pointaddition", routers.EllipticCurvePointAddition).Methods("GET")
 
 	port := os.Getenv("GCAT_PORT")
 	if port == "" {
