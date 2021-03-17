@@ -55,26 +55,11 @@ func EllipticCurvePointAddition(w http.ResponseWriter, r *http.Request) {
 
 	inv_op_x := resources.ModInv(op_x, p)
 
-	lambda := int64(
-		math.Mod(
-			float64(op_y*inv_op_x),
-			float64(p),
-		),
-	)
+	lambda := resources.Mod(op_y*inv_op_x, p)
 
-	x := int64(
-		math.Mod(
-			float64(int64(math.Pow(float64(lambda), 2))-x_1-x_2),
-			float64(p),
-		),
-	)
+	x := resources.Mod(int64(math.Pow(float64(lambda), 2))-x_1-x_2, p)
 
-	y := int64(
-		math.Mod(
-			float64(lambda*(x_1-x)-y_1),
-			float64(p),
-		),
-	)
+	y := resources.Mod(lambda*(x_1-x)-y_1, p)
 
 	var aes_ctr = models.EllipticCurvePointAddition{
 		A:        a,
