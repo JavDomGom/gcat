@@ -18,3 +18,14 @@ func ModInv(a, m int64) int64 {
 		big.NewInt(m),
 	).Int64()
 }
+
+func Mod(a, p int64) int64 {
+	m := a % p
+	if a < 0 && p < 0 {
+		m -= p
+	}
+	if a < 0 && p > 0 {
+		m += p
+	}
+	return m
+}
