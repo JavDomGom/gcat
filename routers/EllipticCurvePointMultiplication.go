@@ -51,7 +51,7 @@ func EllipticCurvePointMultiplication(w http.ResponseWriter, r *http.Request) {
 
 	y := resources.Mod(op_lambda-y_1, p)
 
-	var aes_ctr = models.EllipticCurvePointMultiplication{
+	var ecpm = models.EllipticCurvePointMultiplication{
 		A:         a,
 		B:         b,
 		P:         p,
@@ -67,5 +67,5 @@ func EllipticCurvePointMultiplication(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("context-type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(aes_ctr)
+	json.NewEncoder(w).Encode(ecpm)
 }

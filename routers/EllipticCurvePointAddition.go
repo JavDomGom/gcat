@@ -61,7 +61,7 @@ func EllipticCurvePointAddition(w http.ResponseWriter, r *http.Request) {
 
 	y := resources.Mod(lambda*(x_1-x)-y_1, p)
 
-	var aes_ctr = models.EllipticCurvePointAddition{
+	var ecpa = models.EllipticCurvePointAddition{
 		A:        a,
 		B:        b,
 		P:        p,
@@ -79,5 +79,5 @@ func EllipticCurvePointAddition(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("context-type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(aes_ctr)
+	json.NewEncoder(w).Encode(ecpa)
 }

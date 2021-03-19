@@ -73,7 +73,7 @@ func ElGamal(w http.ResponseWriter, r *http.Request) {
 		),
 	)
 
-	var rsa = models.ElGamal{
+	var elgamal = models.ElGamal{
 		Bob_p:        p,
 		Bob_a:        a,
 		Bob_PriK:     priK,
@@ -88,5 +88,5 @@ func ElGamal(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("context-type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(rsa)
+	json.NewEncoder(w).Encode(elgamal)
 }
